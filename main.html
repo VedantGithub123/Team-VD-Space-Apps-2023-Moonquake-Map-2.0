@@ -4,15 +4,157 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
-    <style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@300;400;500;600;700&display=swap');
+      :root{
+          --Playfair: 'Playfair Display', serif;
+          --MavenPro: 'Maven Pro', sans-serif;
+          --Roboto: 'Roboto', sans-serif;
+          --dark: #3c393d;
+          --exDark: #2b2b2b;
+      }
+
+      *{
+          padding: 0;
+          margin: 0;
+          font-family: 'Maven Pro', sans-serif;
+      }
+
       model-viewer{
-        width: 400px;
-        height: 600px;
+        width: 700px;
+        height: 725px;
         margin: 0 auto;
+        margin-left: 650px;
+        border-radius: 360px;
+      }
+
+      body {
+        background-image: url("resources/bg.jpg");
+      }
+
+      select{
+        height: 50px;
+        border-radius: 30px;
+        color: white;
+        padding-left: 20px;
+        padding-right: 50px;
+        font-size: 20px;
+        background-color: gray;
+        appearance:none;
+        background-image: url("resources/arrow.png");
+        background-repeat: no-repeat;
+        background-position: right 1rem top 50%;
+        background-size: 1rem auto;
+        border: 2px solid white;
+        align-items: center;
+        outline: 0px;
+      }
+
+      .dropbox {
+        margin-top: -650px;
+        margin-left: 50px;
+        position: fixed;
+      }
+
+      .dropbox1 {
+        margin-top: -650px;
+        margin-left: 200px;
+        position: fixed;
+      }
+
+      .dropbox2 {
+        margin-top: -650px;
+        margin-left: 410px;
+        position: fixed;
+      }
+
+      .option-selected {
+        font-size: 17.5px;
+      }
+
+      .rectangle {
+        width: 465px;
+        height: 500px;
+        position: fixed;
+        background-image: url(resources/databg.jpg);
+        margin-top: -550px;
+        border-radius: 30px;
+        margin-left: 50px;
+        opacity: 0.5;
+      }
+
+      .button{
+        color: gray;
+        padding: -650px;
+      }
+
+      button {
+        /* Variables */
+        --button_radius: 0.75em;
+        --button_color: #e8e8e8;
+        --button_outline_color: #000000;
+        font-size: 17px;
+        font-weight: bold;
+        border: none;
+        border-radius: var(--button_radius);
+        background: var(--button_outline_color);
+      }
+
+      .button_top {
+        display: block;
+        box-sizing: border-box;
+        border: 2px solid var(--button_outline_color);
+        border-radius: var(--button_radius);
+        padding: 0.75em 1.5em;
+        margin-top: -400px;
+        position: fixed;
+        background: var(--button_color);
+        color: var(--button_outline_color);
+        transform: translateY(-0.2em);
+        transition: transform 0.1s ease;
+      }
+
+      button:hover .button_top {
+        /* Pull the button upwards when hovered */
+        transform: translateY(-0.33em);
+      }
+
+      button:active .button_top {
+        /* Push the button downwards when pressed */
+        transform: translateY(0);
       }
     </style>
   </head>
   <body>
-    <model-viewer src="https://vedantgithub123.github.io/Moon_1_3474.glb" camera-controls></model-viewer>     
+    <model-viewer src="https://vedantgithub123.github.io/Moon_1_3474.glb" disable-pan = "none" interaction-prompt = "none" camera-controls ="none" camera-orbit="275deg 90deg" position="fixed"></model-viewer>  
+    
+    <div class="dropbox">
+      <select class="input">
+          <option default selected class="option-selected">Year</option>     
+      </select>  
+    </div>
+
+    <div class="dropbox1">
+      <select class="input">
+          <option default selected class="option-selected">September</option>      
+      </select>  
+    </div>
+
+    <div class="dropbox2">
+      <select class="input">
+          <option default selected class="option-selected">Day</option>     
+      </select>  
+    </div>
+
+    <div class="rectangle">
+      this is data
+    </div>
+
+    <button>
+      <span class="button_top"> Button
+      </span>
+    </button>
+
   </body>
 </html>
