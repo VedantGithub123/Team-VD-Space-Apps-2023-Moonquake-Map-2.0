@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script src="frontEndLogic.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <style>
       @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@300;400;500;600;700&display=swap');
@@ -135,41 +136,37 @@
     </style>
   </head>
   <body>
-    <model-viewer src="https://vedantgithub123.github.io/Moon_1_3474.glb" disable-pan = "none" interaction-prompt = "none" camera-controls ="none" camera-orbit="275deg 90deg 700px" position="fixed"></model-viewer>  
+    <model-viewer id="moonModel" disable-zoom src="https://vedantgithub123.github.io/Moon_1_3474.glb" disable-pan = "none" interaction-prompt = "none" camera-controls ="none" camera-orbit="275deg 90deg 700px" position="fixed"></model-viewer>  
     
     <div class="dropbox">
-      <select class="input">
+      <select class="input" id = "yearBox">
           <option default selected class="option-selected">Year</option>     
       </select>  
     </div>
 
     <div class="dropbox1">
-      <select class="input">
+      <select class="input" id = "monthBox">
         <option  class="option-selected">Month</option>
-        <option  class="option-selected">January</option>
-        <option  class="option-selected">February</option>
-        <option  class="option-selected">March</option>
-        <option  class="option-selected">September</option>
                 
       </select>  
     </div>
 
     <div class="dropbox2">
-      <select class="input">
+      <select class="input" id = "dayBox">
           <option default selected class="option-selected">Day</option>     
       </select>  
     </div>
 
     <div class="rectangle">
-      <p>helllooooo</p>
+      <p id = "data"> abc </p>
     </div>
 
 
     <button>
-      <span class="button1"> Center
+      <span class="button1" onclick = "resetPos()"> Center
       </span>
 
-      <span class="button2"> Clear
+      <span class="button2" onclick = "clearSelection()"> Clear
       </span>
     </button>
 
