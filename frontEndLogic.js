@@ -32,4 +32,22 @@ function clearSelection()
     document.getElementById("dayBox").innerHTML = '<option default selected class="option-selected">Day</option>'
     document.getElementById("monthBox").innerHTML = '<option default selected class="option-selected">Month</option>'
     document.getElementById("yearBox").innerHTML = '<option default selected class="option-selected">Year</option>'
+
+    fetch("https://vedantgithub123.github.io/dataFetcher/getYear", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({}),
+    })
+        .then(response => response.json())
+        .then(data => {
+            for (i in data.years){
+                document.getElementById("yearBox").innerHTML+='<option class="option-selected">'+i.toString()+'</option>'
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 }
