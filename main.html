@@ -88,7 +88,8 @@
 
       p{
         padding-left: 30px;
-        padding-bottom: 20px;
+        padding-top: 10px;
+        color: white;
       }
 
       .button{
@@ -109,7 +110,7 @@
         border: 2px solid var(black);
         border-radius: 30px;
         padding: 0.75em 1.5em;
-        margin-top: -660px;
+        margin-top: -620px;
         margin-left: 1350px;
         position: fixed;
         background: gray;
@@ -123,7 +124,7 @@
         border: 2px solid var(black);
         border-radius: 30px;
         padding: 0.75em 1.5em;
-        margin-top: -125px;
+        margin-top: -75px;
         margin-left: 1350px;
         position: fixed;
         background: gray;
@@ -131,36 +132,38 @@
         border: 2px solid white;
       }
 
-
+      .data{
+        margin: 0; 
+        line-height: 2; 
+      }
 
     </style>
   </head>
-  <body>
+  <body onload="clearSelection()">
     <model-viewer id="moonModel" disable-zoom src="https://vedantgithub123.github.io/Moon_1_3474.glb" disable-pan = "none" interaction-prompt = "none" camera-controls ="none" camera-orbit="275deg 90deg 700px" position="fixed"></model-viewer>  
     
-    <div class="dropbox">
+    <div class="dropbox"  onchange="yearSelected()">
       <select class="input" id = "yearBox">
           <option default selected class="option-selected">Year</option>     
       </select>  
     </div>
 
-    <div class="dropbox1">
+    <div class="dropbox1" onchange="monthSelected()">
       <select class="input" id = "monthBox">
         <option  class="option-selected">Month</option>
                 
       </select>  
     </div>
 
-    <div class="dropbox2">
+    <div class="dropbox2" onchange="submitData()">
       <select class="input" id = "dayBox">
           <option default selected class="option-selected">Day</option>     
       </select>  
     </div>
 
     <div class="rectangle">
-      <p id = "data"> abc </p>
+      <p class="data" id="data">Latitude: <br><br> Longitude: <br><br> Magnitude: <br><br> Year: <br><br> Month: <br><br> Day: <br><br> Hour: <br><br> Minutes: </p>
     </div>
-
 
     <button>
       <span class="button1" onclick = "resetPos()"> Center

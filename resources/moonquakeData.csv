@@ -27,7 +27,6 @@ Lat,Long,Year,Month,Day,Hour,Minute,Magnitude
 11,-30,1972,May,17,0,42,-1
 6,4,1972,October,8,15,24,-1
 13,-26,1972,June,8,16,16,-1
-6,5,1972,October,81,52,4,-1
 -1,-71,1973,June,20,20,22,2
 33,35,1973,February,8,22,52,0
 -84,-134,1973,March,13,7,56,3
@@ -77,4 +76,3 @@ Lat,Long,Year,Month,Day,Hour,Minute,Magnitude
 -13,-75,1977,June,28,22,22,-1
 -37,-30,1977,April,16,19,58,-1
 -2,16,1977,May,19,6,8,-1
--20,-63,1977,April,71,23,32,-1

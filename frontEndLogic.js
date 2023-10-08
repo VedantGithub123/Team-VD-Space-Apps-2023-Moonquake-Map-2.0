@@ -18,7 +18,29 @@ function resetPos()
 
 function submitData()
 {
-
+    if (document.getElementById("dayBox").value != "Day"){
+        fetch("http://localhost:5000/getInfo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({"year": document.getElementById("yearBox").value, "month": document.getElementById("monthBox").value, "day": document.getElementById("dayBox").value}),
+        })
+            .then(response => response.json())
+            .then(data => { 
+                for (i in data){
+                    if (data[i]==null){
+                        document.getElementById("data").innerHTML+=i+": Unknown</br></br>"
+                    }else{
+                    document.getElementById("data").innerHTML+=i+": "+data[i]+"</br></br>"
+                    }
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
 }
 
 
@@ -44,11 +66,56 @@ function clearSelection()
         .then(response => response.json())
         .then(data => { 
             for (i in data.years){
-                console.log(data.years[0])
                 document.getElementById("yearBox").innerHTML+='<option class="option-selected">'+data.years[i].toString()+'</option>'
             }
         })
         .catch(error => {
             console.error("Error:", error);
         });
+}
+
+function yearSelected(){
+    if (document.getElementById("yearBox").value != "Year"){
+        fetch("http://localhost:5000/getMonthFromYear", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({"year": document.getElementById("yearBox").value}),
+        })
+            .then(response => response.json())
+            .then(data => { 
+                document.getElementById("monthBox").innerHTML = '<option default selected class="option-selected">Month</option>'
+                for (i in data.months){
+                    document.getElementById("monthBox").innerHTML+='<option class="option-selected">'+data.months[i].toString()+'</option>'
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+}
+
+function monthSelected(){
+    if (document.getElementById("monthBox").value != "Month"){
+        fetch("http://localhost:5000/getDayFromMonthYear", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({"year": document.getElementById("yearBox").value, "month": document.getElementById("monthBox").value}),
+        })
+            .then(response => response.json())
+            .then(data => { 
+                document.getElementById("dayBox").innerHTML = '<option default selected class="option-selected">Day</option>'
+                for (i in data.days){
+                    document.getElementById("dayBox").innerHTML+='<option class="option-selected">'+data.days[i].toString()+'</option>'
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
 }

@@ -10,10 +10,9 @@ df = pd.read_csv("resources/moonquakeData.csv")
 @app.route("/getInfo", methods=["POST"])
 def getInfo():
     data = request.get_json()
-    # Get input from the HTML form
-    data = df.loc[(df['Year'] == 1970) & (df['Month'] == "April") & (df['Day'] == 15)].to_dict()
+    data = df.loc[(df['Year'] == int(data["year"])) & (df['Month'] == data["month"]) & (df['Day'] == int(data["day"]))].to_dict()
     for i in data:
-        data[i] = data[i][1]
+        data[i] = list(data[i].values())[0]
 
     if data["Magnitude"]==-1:
         data["Magnitude"]=None
@@ -29,12 +28,12 @@ def getYear():
 @app.route("/getMonthFromYear", methods=["POST"])
 def getMonthFromYear():
     data = request.get_json()
-    return json.dumps({"months": set(df.loc[df['Year'] == data["year"], 'Month'])})
+    return json.dumps({"months": list(set(df.loc[df['Year'] == int(data["year"]), 'Month']))})
 
 @app.route("/getDayFromMonthYear", methods=["POST"])
 def getDayFromMonthYear():
     data = request.get_json()
-    return json.dumps({"days": set(df.loc[(df['Year'] == data["year"]) & (df['Month'] == data["month"]), 'Day'])})
+    return json.dumps({"days": list(set(df.loc[(df['Year'] == int(data["year"])) & (df['Month'] == data["month"]), 'Day']))})
 
 if __name__ == "__main__":
     app.run(debug=True)
