@@ -1,4 +1,4 @@
-Lat,Long,Year,Month,Day,Hour,Minute,Magnitude
+Latitude,Longitude,Year,Month,Day,Hour,Minute,Magnitude
 -3,-21,1969,November,20,22,17,-1
 -2,-27,1970,April,15,2,9,-1
 -8,-26,1971,February,4,7,40,-1

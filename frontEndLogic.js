@@ -2,23 +2,27 @@ const baseLat = 275;
 const baseLong = 90;
 var curLat = baseLat;
 var curLong = baseLong;
-var lat = 0;
-var long = 0;
-var year = 0;
-var month = "None";
-var day = 0;
-var hour = 0;
-var minute = 0;
 
 
 function resetPos()
 {
-    document.getElementById("moonModel").setAttribute("camera-orbit", curLat.toString().concat("deg ", curLong.toString(), "deg 700px"));
+    document.getElementById("moonModel").setAttribute("auto-rotate-delay", 0)
+    if (document.getElementById("dayBox").value!="Day"){
+        document.getElementById("text").style.display=""
+        document.getElementById("moonModel").removeAttribute("auto-rotate");
+        document.getElementById("moonModel").setAttribute("camera-orbit", curLat.toString().concat("deg ", curLong.toString(), "deg 700px"));
+        document.getElementById("moonModel").classList.add('animate')
+        setTimeout(function(){
+            document.getElementById("moonModel").classList.remove('animate')
+       },1000);
+    }
 }
+
+
 
 function submitData()
 {
-    if (document.getElementById("dayBox").value != "Day"){
+    if (document.getElementById("dayBox").value != "Day" && document.getElementById("monthBox").value != "Month" && document.getElementById("yearBox").value != "Year"){
         fetch("http://localhost:5000/getInfo", {
             method: "POST",
             headers: {
@@ -29,13 +33,17 @@ function submitData()
         })
             .then(response => response.json())
             .then(data => { 
+                document.getElementById("data").innerHTML = ""
                 for (i in data){
                     if (data[i]==null){
                         document.getElementById("data").innerHTML+=i+": Unknown</br></br>"
                     }else{
-                    document.getElementById("data").innerHTML+=i+": "+data[i]+"</br></br>"
+                        document.getElementById("data").innerHTML+=i+": "+data[i]+"</br></br>"
                     }
                 }
+                curLat = data["Latitude"]+baseLat
+                curLong =  data["Longitude"]+baseLong
+                resetPos()
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -49,11 +57,17 @@ function clearSelection()
 {
     curLat = baseLat;
     curLong = baseLong;
-    resetPos();
-    document.getElementById("data").innerHTML = ""
+    document.getElementById("moonModel").setAttribute("auto-rotate", "");
+    document.getElementById("text").style.display=""
+
+    document.getElementById("moonModel").setAttribute("auto-rotate-delay", 0)
+    
+
+    change()
     document.getElementById("dayBox").innerHTML = '<option default selected class="option-selected">Day</option>'
     document.getElementById("monthBox").innerHTML = '<option default selected class="option-selected">Month</option>'
     document.getElementById("yearBox").innerHTML = '<option default selected class="option-selected">Year</option>'
+    document.getElementById("data").innerHTML = "Latitude: Not Selected<br><br> Longitude: Not Selected<br><br> Year: Not Selected<br><br> Month: Not Selected<br><br> Day: Not Selected<br><br> Hour: Not Selected<br><br> Minute: Not Selected<br><br> Magnitude: Not Selected"
 
     fetch("http://localhost:5000/getYear", {
         method: "POST",
@@ -118,4 +132,8 @@ function monthSelected(){
                 console.error("Error:", error);
             });
     }
+}
+
+function change(){
+    document.getElementById("text").style.display="none"
 }
