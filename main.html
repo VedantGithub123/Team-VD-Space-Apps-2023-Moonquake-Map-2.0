@@ -25,8 +25,9 @@
       model-viewer{
         width: 700px;
         height: 725px;
+        padding-top: 8px;
         margin: 0 auto;
-        margin-left: 650px;
+        margin-left: 600px;
         border-radius: 360px;
       }
 
@@ -59,20 +60,20 @@
       }
 
       .dropbox {
-        margin-top: -650px;
-        margin-left: 50px;
+        margin-top: -550px;
+        margin-left: 390px;
         position: fixed;
       }
 
       .dropbox1 {
-        margin-top: -650px;
-        margin-left: 200px;
+        margin-top: -325px;
+        margin-left: 390px;
         position: fixed;
       }
 
       .dropbox2 {
-        margin-top: -650px;
-        margin-left: 410px;
+        margin-top: -100px;
+        margin-left: 390px;
         position: fixed;
       }
 
@@ -81,7 +82,7 @@
       }
 
       .rectangle {
-        width: 465px;
+        width: 265px;
         height: 500px;
         position: relative;
         margin-top: -550px;
@@ -95,7 +96,7 @@
       p{
         padding-left: 30px;
         padding-top: 10px;
-        color: white;
+        color: white;=
       }
 
       .button{
@@ -162,7 +163,7 @@
         width: 40px;
         height: 40px;
         margin: 0 auto;
-        margin-left: 1000px;
+        margin-left: 975px;
         margin-top: -350px;
         position: fixed;
         border: 5px solid red;
@@ -176,9 +177,20 @@
         background: rgb(197, 196, 196);
       }
 
+      .title{
+        color: white;
+        font-size: 70px;
+        margin-left: 60px;
+        margin-top: 30px;
+        position: fixed;
+        opacity: 0.4;
+      }
+
     </style>
   </head>
   <body onload="clearSelection()">
+    <h1 class="title">Moon Mapper</h1>
+
     <model-viewer class = "" id="moonModel" auto-rotate disable-zoom src="https://vedantgithub123.github.io/Moon_1_3474.glb" disable-pan = "none" interaction-prompt = "none" camera-controls ="none" camera-orbit="275deg 90deg 700px" position="fixed" onmousedown="change()"></model-viewer>  
     
     <div class="dropbox"  onchange="yearSelected()">
@@ -213,6 +225,5 @@
     </button>
 
     <div class="pinpointLocation" id="text"></div>
-
   </body>
 </html>

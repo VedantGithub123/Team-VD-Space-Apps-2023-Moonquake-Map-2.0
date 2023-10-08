@@ -14,7 +14,7 @@ function resetPos()
         document.getElementById("moonModel").classList.add('animate')
         setTimeout(function(){
             document.getElementById("moonModel").classList.remove('animate')
-       },1000);
+       },2000);
     }
 }
 
@@ -61,7 +61,7 @@ function clearSelection()
     document.getElementById("text").style.display=""
 
     document.getElementById("moonModel").setAttribute("auto-rotate-delay", 0)
-    
+
 
     change()
     document.getElementById("dayBox").innerHTML = '<option default selected class="option-selected">Day</option>'
