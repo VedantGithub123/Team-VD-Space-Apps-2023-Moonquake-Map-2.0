@@ -23,7 +23,7 @@ function resetPos()
 function submitData()
 {
     if (document.getElementById("dayBox").value != "Day" && document.getElementById("monthBox").value != "Month" && document.getElementById("yearBox").value != "Year"){
-        fetch("http://localhost:5000/getInfo", {
+        fetch("https://datafetcher.vedantnehete.repl.co/getInfo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -69,7 +69,7 @@ function clearSelection()
     document.getElementById("yearBox").innerHTML = '<option default selected class="option-selected">Year</option>'
     document.getElementById("data").innerHTML = "Latitude: Not Selected<br><br> Longitude: Not Selected<br><br> Year: Not Selected<br><br> Month: Not Selected<br><br> Day: Not Selected<br><br> Hour: Not Selected<br><br> Minute: Not Selected<br><br> Magnitude: Not Selected"
 
-    fetch("http://localhost:5000/getYear", {
+    fetch("https://datafetcher.vedantnehete.repl.co/getYear", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function clearSelection()
 
 function yearSelected(){
     if (document.getElementById("yearBox").value != "Year"){
-        fetch("http://localhost:5000/getMonthFromYear", {
+        fetch("https://datafetcher.vedantnehete.repl.co/getMonthFromYear", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -113,7 +113,7 @@ function yearSelected(){
 
 function monthSelected(){
     if (document.getElementById("monthBox").value != "Month"){
-        fetch("http://localhost:5000/getDayFromMonthYear", {
+        fetch("https://datafetcher.vedantnehete.repl.co/getDayFromMonthYear", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
